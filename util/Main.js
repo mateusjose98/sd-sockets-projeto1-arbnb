@@ -12,7 +12,7 @@
 // // Ver as datas disponíveis para aluguel
 
 const Imovel = require("./Imovel");
-
+const Cliente = require("./Cliente");
 
 
 const imoveis =[];
@@ -29,15 +29,14 @@ const pesquisarPorCodigo = function (ArrayImoveis, codigoBuscado){
             return ArrayImoveis[i];
         }
     }
+    return "Imovel não consta como cadastrado."
 }
 
 
 const cadastrarImovel = function (imoveis, imovel){
     imoveis.push(imovel);
 }
-const removerImovel = function(imoveis, indice){
-    imoveis.splice(indice, 1);
-}
+
 
 const listarImoveis = function (imoveis) {
     return imoveis;
@@ -64,12 +63,26 @@ cadastrarImovel(imoveis, imovel3);
 cadastrarImovel(imoveis, imovel4);
 
 
+const clienteTeste = new Cliente("José", "123000123-20");
+
+// console.log(clienteTeste);
+const pesquisa = pesquisarPorCodigo(imoveis, "13");
+console.log(pesquisa);
+clienteTeste.realizarReserva( pesquisa, '11-28-2020' , '12-28-2020');
+
+// console.log(imoveis);
 
 
-console.log(imovel1);
-imovel1.reservar('11-28-2020', '12-28-2020');
+console.log(clienteTeste);
 
-console.log(imovel1);
+console.log(pesquisa);
+
+
+// console.log(imovel1);
+// imovel1.reservar('11-28-2020', '12-28-2020');
+// imovel1.reservar('11-28-2020', '12-28-2020');
+
+// console.log(imovel1);
 
 
 

@@ -19,8 +19,14 @@ class Imovel{
     reservar(dataInicialReserva, dataFinalReserva){
 
         this.setaDisponibilidade();
-        if (this.disponivel){            
-            this.reservas.push(new Reserva(this, dataInicialReserva, dataFinalReserva));
+        if (this.disponivel){   
+            const r = new Reserva(this, dataInicialReserva, dataFinalReserva);         
+            this.reservas.push(r);
+            this.setaDisponibilidade();
+            return r;
+        } else {
+            console.log("Não foi possível reservar o Imovel neste período.");
+            return;
         }
 
         this.setaDisponibilidade();
