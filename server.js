@@ -36,9 +36,15 @@ cadastrarImovel(imoveis, imovel4);
 /////////////////////////////////////////////// SOCKETS //////////////////////////////////////////////
 const connectionListener = (socket) => {
 
-    socket.on('connection', () => {
-        socket.write(`O cliente ${socket.remotePort} se conectou`);
-    })
+    
+    console.log(`O cliente ${socket.remotePort} se conectou`);
+    socket.write("-------------------------OPERAÇÕES DISPONÍVEIS: --------------------------------");
+    socket.write("RESERVAR");
+    socket.write("CADASTRAR");
+    socket.write("LIST I DISP");
+    socket.write("DD IMOVEL");
+    socket.write("OBS.: qualquer outra mensagem será tratada como erro. O separador entre parâmetro e função é a '/'");
+    
 
     socket.on("data", (data) => {
         const comando = data.toString();
@@ -58,6 +64,9 @@ const connectionListener = (socket) => {
             
             clienteTeste.realizarReserva(imovel,dataInicial,dataFinal);
 
+            socket.write("Sua reserva realizada.");
+            socket.write(clienteTeste.toString());
+
 
             
 // CADASTRAR/1555/Casa Monte Sinai/quarto/rua dois casa 5 Bairro dos Ricos 
@@ -71,12 +80,12 @@ const connectionListener = (socket) => {
 
             cadastrarImovel(imoveis, imovelNovo);
  //LISTAR IMOVEIS DISPONIVEL/           
-        }else if (parametros[0] === "LISTAR IMOVEIS DISPONIVEL") {
+        }else if (parametros[0] === "LIST I DISP") {
 
             const clienteTeste = new Cliente("José", "123000123-20");;
             clienteTeste.ImoveisDisponiveis(imoveis);
 //DATAS DISPONIVEL PARA A RESERVA DO IMOVEL/13
-        }else if (parametros[0] === "DATAS DISPONIVEL PARA A RESERVA DO IMOVEL") {
+        }else if (parametros[0] === "DD IMOVEL") {
             const codigoBuscado = parametros[1];
             const clienteTeste = new Cliente("José", "123000123-20");;
             clienteTeste.datasDisponiveis(imoveis, codigoBuscado);

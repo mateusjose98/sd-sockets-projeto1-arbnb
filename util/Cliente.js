@@ -20,7 +20,11 @@ class Cliente {
         
         const minhaReserva = imovel.reservar(dataInicialReserva, dataFinalReserva); //undefined
         
-        if(minhaReserva !== undefined) this.reservasDoCliente.push(minhaReserva);
+        if(minhaReserva !== undefined){
+            console.log(minhaReserva);
+            this.reservasDoCliente.push(minhaReserva);
+            
+        } 
     }
 
     pesquisarPorCodigo(ArrayImoveis, codigoBuscado){
