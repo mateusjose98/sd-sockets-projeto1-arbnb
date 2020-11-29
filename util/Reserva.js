@@ -1,4 +1,5 @@
 const Imovel = require("./Imovel");
+const Cliente = require("./Cliente");
 
 class Reserva{
 

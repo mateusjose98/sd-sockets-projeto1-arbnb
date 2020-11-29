@@ -3,15 +3,16 @@ const net = require('net');
 const client = net.Socket();
 
 const clientConnected = () => {
-    // console.log("Cliente conectado");
+     console.log("Cliente conectado");
 
-   
-    client.write("MEDIA 0 0");
+    //client.write("CADASTRAR/1555/Casa Monte Sinai/quarto/rua dois casa 5 Bairro dos Ricos");
+    //LISTAR IMOVEIS DISPONIVEL
+    //RESERVAR/13/12-12-2020/12-25-2020
+    client.write("RESERVAR/13/12-12-2020/12-25-2020");
     
     
     client.on("data", (data) => {
-        console.log("MEDIA: " + data.toString());
-    
+        
         client.write("FINALIZA");
     });
 }

@@ -1,5 +1,7 @@
 const Reserva = require("./Reserva");
 
+const Cliente = require("./Cliente");
+
 class Imovel{
 
 
@@ -22,11 +24,18 @@ class Imovel{
         
         console.log(this.disponivel);
         if (this.disponivel){   
-            const r = new Reserva(this, dataInicialReserva, dataFinalReserva);         
-            this.reservas.push(r);
-            this.setaDisponibilidade(dataInicialReserva, dataFinalReserva);
-            console.log("Reserva realizada com sucesso!!")
-            return r;
+            try {
+                
+                const r = new Reserva(this, dataInicialReserva, dataFinalReserva); 
+                       
+                this.reservas.push(r);
+                this.setaDisponibilidade(dataInicialReserva, dataFinalReserva);
+                console.log("Reserva realizada com sucesso!!")
+                return r;
+            } catch (e) {
+                console.log(e);
+            }
+           
         } else {
             console.log("Não foi possível reservar o Imovel neste período.");
             return;

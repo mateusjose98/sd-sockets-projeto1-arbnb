@@ -1,16 +1,3 @@
-// // Este projeto consiste no desenvolvimento de um serviço de aluguel de quartos e apartamentos, no formato AirBnb.
-//  O servidor deve fornecer serviços para o locador e o locatário.
-
-// // Para isso, você deve desenvolver um protocolo da camada de aplicação para a comunicação entre um cliente e 
-// um servidor que utilizam a API de Sockets do Node.js para se comunicarem.
-
-// // Esse serviço deve permitir aos clientes:
-
-// // Cadastrar um imóvel/quarto para reserva ok
-// // Listar imóveis disponíveis
-// // Reservar um imóvel/quarto ok
-// // Ver as datas disponíveis para aluguel
-
 const Imovel = require("./Imovel");
 const Cliente = require("./Cliente");
 
@@ -38,9 +25,7 @@ const cadastrarImovel = function (imoveis, imovel){
 }
 
 
-const listarImoveis = function (imoveis) {
-    return imoveis;
-} 
+
 
 
 cadastrarImovel(imoveis, imovel1);
@@ -56,29 +41,18 @@ const pesquisa = pesquisarPorCodigo(imoveis, "13");
 
 
 clienteTeste.realizarReserva(pesquisa, '11-28-2020' , '12-28-2020');
-clienteTeste.realizarReserva(pesquisa, '11-28-2020' , '12-28-2020');
-clienteTeste.realizarReserva(pesquisa, '02-10-2010' , '02-11-2010');
-clienteTeste.realizarReserva(pesquisa, '02-10-2010' , '02-11-2010');
 
 
+clienteTeste.datasDisponiveis(imoveis,"13");
 
-//clienteTeste.datasDisponiveis(imoveis,"13");
+clienteTeste.ImoveisDisponiveis(imoveis);
 
-// console.log(imoveis);
+
 
 
 console.log(clienteTeste);
 
-// console.log(pesquisa);
-
-
-// console.log(imovel1);
-// imovel1.reservar('11-28-2020', '12-28-2020');
-// imovel1.reservar('11-28-2020', '12-28-2020');
-
-// console.log(imovel1);
-
-
+/
 
 exports.imoveis = imoveis;
 

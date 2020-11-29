@@ -18,7 +18,6 @@ class Cliente {
 
     realizarReserva(imovel, dataInicialReserva, dataFinalReserva){
         const minhaReserva = imovel.reservar(dataInicialReserva, dataFinalReserva);
-        console.log(minhaReserva)
         if(minhaReserva !== undefined) this.reservasDoCliente.push(minhaReserva);
     }
 
@@ -32,12 +31,30 @@ class Cliente {
 
     datasDisponiveis(ArrayImoveis, codigoBuscado){
         const imovelSelecionado = this.pesquisarPorCodigo(ArrayImoveis, codigoBuscado);
+        if(imovelSelecionado.reservas.length === 0 ){
+            console.log("Todos os dias.");
+        }
         for (let rer of imovelSelecionado.reservas){
             console.log(`Todos dos dias exceto: ${rer.dataInicialReserva} à ${rer.dataFinalReserva}`);
 
-        }
-            
+        }     
         
+    }
+
+    ImoveisDisponiveis(ArrayImoveis){
+
+        for (let imv of ArrayImoveis){
+        
+            if(imv.reservas.length === 0){
+                console.log(`O Imovél ${imv.nome} não tem reservar`);
+            }else{
+                for(let rer of imv.reservas){
+                    console.log(`O Imovél ${rer.imovel.nome} não estará disponível somente no período de: ${rer.dataInicialReserva} à ${rer.dataFinalReserva}`);
+                    
+            }
+        }
+
+    }     
         
     }
 
