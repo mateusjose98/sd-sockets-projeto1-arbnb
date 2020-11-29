@@ -3,7 +3,7 @@ const net = require('net');
 const client = net.Socket();
 
 const clientConnected = () => {
-     console.log("Cliente conectado");
+     
 
     //client.write("CADASTRAR/1555/Casa Monte Sinai/quarto/rua dois casa 5 Bairro dos Ricos");
     //LISTAR IMOVEIS DISPONIVEL

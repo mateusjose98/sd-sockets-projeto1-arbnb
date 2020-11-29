@@ -52,7 +52,7 @@ clienteTeste.ImoveisDisponiveis(imoveis);
 
 console.log(clienteTeste);
 
-/
+
 
 exports.imoveis = imoveis;
 

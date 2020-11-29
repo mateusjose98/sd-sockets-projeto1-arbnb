@@ -36,23 +36,26 @@ cadastrarImovel(imoveis, imovel4);
 /////////////////////////////////////////////// SOCKETS //////////////////////////////////////////////
 const connectionListener = (socket) => {
 
+    socket.on('connection', () => {
+        socket.write(`O cliente ${socket.remotePort} se conectou`);
+    })
+
     socket.on("data", (data) => {
         const comando = data.toString();
        
 
         const parametros = comando.split("/");
 
-        console.log(parametros);
+        
 
         if (parametros[0] === "RESERVAR") {
             const codImovel = parametros[1];
             const dataInicial = parametros[2];
             const dataFinal = parametros[3];
             const imovel = pesquisarPorCodigo(imoveis, codImovel);
-            console.log(imovel);
-          
+           
             const clienteTeste = new Cliente("José", "123000123-20");
-            console.log(clienteTeste);
+            
             clienteTeste.realizarReserva(imovel,dataInicial,dataFinal);
 
 

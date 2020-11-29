@@ -19,15 +19,15 @@ class Imovel{
     }
 
     reservar(dataInicialReserva, dataFinalReserva){
-
+        
         this.setaDisponibilidade(dataInicialReserva, dataFinalReserva);
         
-        console.log(this.disponivel);
+        console.log("valor de disponivel nesse momento: " + this.disponivel);
         if (this.disponivel){   
             try {
                 
                 const r = new Reserva(this, dataInicialReserva, dataFinalReserva); 
-                       
+                
                 this.reservas.push(r);
                 this.setaDisponibilidade(dataInicialReserva, dataFinalReserva);
                 console.log("Reserva realizada com sucesso!!")

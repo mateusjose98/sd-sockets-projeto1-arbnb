@@ -17,7 +17,9 @@ class Cliente {
     }
 
     realizarReserva(imovel, dataInicialReserva, dataFinalReserva){
-        const minhaReserva = imovel.reservar(dataInicialReserva, dataFinalReserva);
+        
+        const minhaReserva = imovel.reservar(dataInicialReserva, dataFinalReserva); //undefined
+        
         if(minhaReserva !== undefined) this.reservasDoCliente.push(minhaReserva);
     }
 
