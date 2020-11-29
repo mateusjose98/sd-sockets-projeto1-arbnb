@@ -18,18 +18,20 @@ class Imovel{
 
     reservar(dataInicialReserva, dataFinalReserva){
 
-        this.setaDisponibilidade();
+        this.setaDisponibilidade(dataInicialReserva, dataFinalReserva);
+        
+        console.log(this.disponivel);
         if (this.disponivel){   
             const r = new Reserva(this, dataInicialReserva, dataFinalReserva);         
             this.reservas.push(r);
-            this.setaDisponibilidade();
+            this.setaDisponibilidade(dataInicialReserva, dataFinalReserva);
+            console.log("Reserva realizada com sucesso!!")
             return r;
         } else {
             console.log("Não foi possível reservar o Imovel neste período.");
             return;
         }
 
-        this.setaDisponibilidade();
 
         
     }
@@ -49,33 +51,42 @@ class Imovel{
 
     }
     
-    setaDisponibilidade(){
+    setaDisponibilidade(dataInicial, dataFinal){
 
+        dataInicial = new Date(dataInicial);
+        dataFinal = new Date(dataFinal);
+        
         if(this.existeReserva()){
+            
             for (let reservaAtual of this.reservas){
-                const hoje = new Date();
-                console.log(hoje >= reservaAtual.dataInicialReserva);
-                if (hoje >= reservaAtual.dataInicialReserva && hoje <= reservaAtual.dataFinalReserva){
+
+                const teste = (dataInicial >= reservaAtual.dataInicialReserva && dataFinal <= reservaAtual.dataFinalReserva) ||
+                (dataInicial >= reservaAtual.dataInicialReserva && dataInicial <= reservaAtual.dataFinalReserva) ||
+                (dataFinal >= reservaAtual.dataInicialReserva && dataFinal <= reservaAtual.dataFinalReserva);
+
+                if (teste){
                     this.disponivel = false;
-                }
-                else{
+                } else {
                     this.disponivel = true;
                 }
-                
+              }    
             }
-        }
-
-
+        else{
+            
+                this.disponivel = true;
+            }
     }
 
+
+    
 
    setaDataInicialReserva (data) {
       this.dataInicialReserva = new Data(data);
     }
 
 
-      setaDataFinalReserva(dias){
-         this.dataFinalReserva = this.dataInicialReserva.adicionarDias(dias);
+    setaDataFinalReserva(dias){
+        this.dataFinalReserva = this.dataInicialReserva.adicionarDias(dias);
     }
  }
  

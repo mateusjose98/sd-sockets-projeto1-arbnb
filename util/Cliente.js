@@ -18,8 +18,8 @@ class Cliente {
 
     realizarReserva(imovel, dataInicialReserva, dataFinalReserva){
         const minhaReserva = imovel.reservar(dataInicialReserva, dataFinalReserva);
-        
-        this.reservasDoCliente.push(minhaReserva);
+        console.log(minhaReserva)
+        if(minhaReserva !== undefined) this.reservasDoCliente.push(minhaReserva);
     }
 
     pesquisarPorCodigo(ArrayImoveis, codigoBuscado){
@@ -32,9 +32,13 @@ class Cliente {
 
     datasDisponiveis(ArrayImoveis, codigoBuscado){
         const imovelSelecionado = this.pesquisarPorCodigo(ArrayImoveis, codigoBuscado);
-        for (let rer of imovelSelecionado){
-            return `Todos dos dias exceto: ${rer.reservas.dataInicialReserva} à ${rer.reservas.dataFinalReserva}`;
+        for (let rer of imovelSelecionado.reservas){
+            console.log(`Todos dos dias exceto: ${rer.dataInicialReserva} à ${rer.dataFinalReserva}`);
+
         }
+            
+        
+        
     }
 
 

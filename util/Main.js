@@ -6,9 +6,9 @@
 
 // // Esse serviço deve permitir aos clientes:
 
-// // Cadastrar um imóvel/quarto para reserva
+// // Cadastrar um imóvel/quarto para reserva ok
 // // Listar imóveis disponíveis
-// // Reservar um imóvel/quarto
+// // Reservar um imóvel/quarto ok
 // // Ver as datas disponíveis para aluguel
 
 const Imovel = require("./Imovel");
@@ -43,20 +43,6 @@ const listarImoveis = function (imoveis) {
 } 
 
 
-
-const imoveisDisponiveis = (Arrayimoveis) => {
-    const disponiveis = [];
-    for (let i = 0; i < Arrayimoveis.length; i++){
-        if (Arrayimoveis[i].disponivel){
-            disponiveis.push(Arrayimoveis[i]);
-        }
-    }
-    return disponiveis;
-}
-
-
-
-
 cadastrarImovel(imoveis, imovel1);
 cadastrarImovel(imoveis, imovel2);
 cadastrarImovel(imoveis, imovel3);
@@ -65,17 +51,25 @@ cadastrarImovel(imoveis, imovel4);
 
 const clienteTeste = new Cliente("José", "123000123-20");
 
-// console.log(clienteTeste);
+
 const pesquisa = pesquisarPorCodigo(imoveis, "13");
-console.log(pesquisa);
-clienteTeste.realizarReserva( pesquisa, '11-28-2020' , '12-28-2020');
+
+
+clienteTeste.realizarReserva(pesquisa, '11-28-2020' , '12-28-2020');
+clienteTeste.realizarReserva(pesquisa, '11-28-2020' , '12-28-2020');
+clienteTeste.realizarReserva(pesquisa, '02-10-2010' , '02-11-2010');
+clienteTeste.realizarReserva(pesquisa, '02-10-2010' , '02-11-2010');
+
+
+
+//clienteTeste.datasDisponiveis(imoveis,"13");
 
 // console.log(imoveis);
 
 
 console.log(clienteTeste);
 
-console.log(pesquisa);
+// console.log(pesquisa);
 
 
 // console.log(imovel1);
